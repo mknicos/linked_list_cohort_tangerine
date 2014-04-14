@@ -69,8 +69,32 @@ class LinkedList
   end
 
   def remove(index)
-    @size = @size - 1
+    # find current next_list_item
+    item = @first_item
+    puts item.next_list_item
+    index.times {item = item.next_list_item}
 
+    puts ""
+    puts "item.next_list_item"
+    puts "item"
+    puts item
+    puts item.next_list_item
+
+    current_next_item = item.next_list_item
+
+    puts item.next_list_item
+
+    #change previous item in list's next_list_item
+    item2 = @first_item
+    index -= 1
+    index.times {item2 = item.next_list_item}
+    item2.next_list_item = current_next_item
+    puts ""
+    puts "item.next_list_item"
+    puts item2.next_list_item
+
+    #reduce size of list
+    @size = @size - 1
   end
 
 end
