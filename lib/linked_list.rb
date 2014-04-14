@@ -34,13 +34,7 @@ class LinkedList
   end
 
   def size
-    item = @first_item
-    i = 0
-    until item.nil?
-      i += 1
-      item = item.next_list_item
-    end
-    i
+    @size
   end
 
   def last
@@ -67,16 +61,16 @@ class LinkedList
   end
 
   def []=(index, new_payload)
-    puts '\n'
-    puts "This is my console.log"
-    puts index
-    puts new_payload
     item = @first_item
     index.times do
-      item.next_list_item
+      item = item.next_list_item
     end
     item.payload = new_payload
-    
+  end
+
+  def remove(index)
+    @size = @size - 1
+
   end
 
 end
