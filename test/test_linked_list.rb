@@ -197,7 +197,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
 
   def test_25_remove_item_that_doesnt_exist
     ll = LinkedList.new
-    assert_raise IndexError do
+    assert_raises IndexError do
       ll.remove(1)
     end
   end

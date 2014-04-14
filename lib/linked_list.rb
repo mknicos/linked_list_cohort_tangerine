@@ -1,5 +1,6 @@
 class LinkedList
   attr_reader :size
+  attr_writer :first_item
 
   def initialize(*items)
     @size = 0
@@ -69,29 +70,20 @@ class LinkedList
   end
 
   def remove(index)
-    # find current next_list_item
     item = @first_item
-    puts item.next_list_item
-    index.times {item = item.next_list_item}
 
-    puts ""
-    puts "item.next_list_item"
-    puts "item"
-    puts item
-    puts item.next_list_item
+    #error if trying to delete negative num, or greater than length of list
+    raise IndexError if (index < 0) or (index >= @size)
 
-    current_next_item = item.next_list_item
-
-    puts item.next_list_item
-
-    #change previous item in list's next_list_item
-    item2 = @first_item
-    index -= 1
-    index.times {item2 = item.next_list_item}
-    item2.next_list_item = current_next_item
-    puts ""
-    puts "item.next_list_item"
-    puts item2.next_list_item
+    if index != 0
+    # go to item previous to one being deleted
+      (index-1).times {item = item.next_list_item}
+      item.next_list_item = item.next_list_item.next_list_item
+    else
+    #you are removing first item in list
+      item = item.next_list_item
+      @first_item = item
+    end
 
     #reduce size of list
     @size = @size - 1
