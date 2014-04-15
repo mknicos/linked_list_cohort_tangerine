@@ -120,22 +120,15 @@ class LinkedList
     if @size <= 1
       is_sorted = true
     else
-      until index == @size or item.next_list_item == nil
-        puts "INDEX IN UNTIL"
-        puts index
-        item2 = item.next_list_item
-        is_sorted = item <= item2
+    #until loops until end of list, because at the end the next item is nil
+      until item.next_list_item == nil
+        is_sorted = item <= item.next_list_item
         item = item.next_list_item
         index += 1
       end
     end
+    return is_sorted
 
-    puts ""
-    puts "IS SORTED"
-    puts is_sorted
-    puts "INDEX"
-    puts index
-    is_sorted
   end
 
 end
