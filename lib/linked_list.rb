@@ -58,9 +58,8 @@ class LinkedList
     result + " |"
   end
 
-  def [](key)
-    get(key)
-  end
+  #[] is the same as the get method
+  alias [] get
 
   def []=(index, new_payload)
     item = @first_item
@@ -82,8 +81,7 @@ class LinkedList
       item.next_list_item = item.next_list_item.next_list_item
     else
     #you are removing first item in list
-      item = item.next_list_item
-      @first_item = item
+      @first_item = @first_item.next_list_item
     end
 
     #reduce size of list
@@ -128,7 +126,32 @@ class LinkedList
       end
     end
     return is_sorted
-
   end
 
+  def get_item(i)
+    raise IndexError if i < 0 or i >= size
+    item = @first_item
+    i.times do
+      item = item.next_list_item
+    end
+    item
+  end
+
+  def swap_with_next(index)
+    if index == @size -1
+      raise IndexError
+    end
+    item1 = get_item(index)
+    next_item = item1.next_list_item
+
+    if index == 0
+      @first_item = item1.next_list_item
+      item1.next_list_item = item1.next_list_item.next_list_item
+    else
+      prev_item = get_item(index - 1)
+      prev_item.next_list_item = next_item
+      item1.next_list_item = item1.next_list_item.next_list_item
+    end
+    next_item.next_list_item = item1
+  end
 end

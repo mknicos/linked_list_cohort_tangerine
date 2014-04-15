@@ -289,7 +289,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
     ll = LinkedList.new(1, 2, "bar", "foo", :b)
     assert ll.sorted?
   end
-
+=begin
   def test_40_sort_empty_list
     ll = LinkedList.new()
     sortedll = ll.sort
@@ -331,7 +331,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
     sortedll = ll.sort
     assert_equal( "| 1, 2, bar, foo, b |", sortedll.to_s)
   end
-
+=end
   #=== Useful for bubble sort: ===#
 
   def test_47_swap_middle_items
@@ -358,7 +358,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
   def test_50_swap_last_item
     ll = LinkedList.new("a","b","c","d")
     assert_equal "| a, b, c, d |", ll.to_s
-    assert_raise IndexError do
+    assert_raises IndexError do
       ll.swap_with_next(3)
     end
   end
