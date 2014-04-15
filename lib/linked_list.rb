@@ -1,4 +1,5 @@
 class LinkedList
+  include Comparable
   attr_reader :size
   attr_writer :first_item
 
@@ -87,6 +88,54 @@ class LinkedList
 
     #reduce size of list
     @size = @size - 1
+  end
+
+  def indexOf(string)
+    if @size == 0
+      return nil
+    end
+
+    index = 0
+    item = @first_item
+
+  #move items until the current payload equals the string your looking for
+    until item.payload == string
+      item = item.next_list_item
+      index += 1
+
+  #if index == @size, the string was not found
+      if index == @size
+        index = nil
+        break
+      end
+    end
+    return index
+  end
+
+  def sorted?
+    item = @first_item
+    is_sorted = false
+    index = 0
+
+    if @size <= 1
+      is_sorted = true
+    else
+      until index == @size or item.next_list_item == nil
+        puts "INDEX IN UNTIL"
+        puts index
+        item2 = item.next_list_item
+        is_sorted = item <= item2
+        item = item.next_list_item
+        index += 1
+      end
+    end
+
+    puts ""
+    puts "IS SORTED"
+    puts is_sorted
+    puts "INDEX"
+    puts index
+    is_sorted
   end
 
 end

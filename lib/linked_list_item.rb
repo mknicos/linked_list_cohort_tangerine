@@ -8,7 +8,7 @@ class LinkedListItem
   end
 
   def next_list_item=(item)
-    raise ArgumentError if self == item
+    raise ArgumentError, "set item to self" if self === item
     @next_list_item = item
   end
   

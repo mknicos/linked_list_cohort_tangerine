@@ -229,7 +229,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
     assert_equal(2, ll.indexOf("good"))
   end
 
-  def test_29_index_of_last_item
+  def test_29_index_of_nil_item
     ll = LinkedList.new()
     ll.add_item("foo")
     ll.add_item("bar")
