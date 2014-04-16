@@ -111,16 +111,19 @@ class LinkedList
   end
 
   def sorted?
-    item = @first_item
     is_sorted = false
     index = 0
 
     if @size <= 1
-      is_sorted = true
+      return true
     else
+    item = @first_item
     #until loops until end of list, because at the end the next item is nil
       until item.next_list_item == nil
         is_sorted = item <= item.next_list_item
+          if is_sorted == false
+            return false
+          end
         item = item.next_list_item
         index += 1
       end
@@ -128,14 +131,6 @@ class LinkedList
     return is_sorted
   end
 
-  def get_item(i)
-    raise IndexError if i < 0 or i >= size
-    item = @first_item
-    i.times do
-      item = item.next_list_item
-    end
-    item
-  end
 
   def swap_with_next(index)
     if index == @size -1
@@ -153,5 +148,39 @@ class LinkedList
       item1.next_list_item = item1.next_list_item.next_list_item
     end
     next_item.next_list_item = item1
+  end
+
+  def sort
+    counter_index = 0
+    x =  self.sorted?
+    puts
+    puts "THIS IS SOMETHING"
+    puts x
+    until self.sorted?
+      puts ""
+      puts "NOT SORTED"
+      item1 = get_item(counter_index)
+      item2 = get_item(counter_index + 1)
+      if item1 < item2
+        counter_index += 1
+      else
+        swap_with_next(counter_index)
+        counter_index = 0
+      end
+    end
+    self
+  end
+
+
+#------------PRIVATE-------------------#
+  private
+
+  def get_item(i)
+    raise IndexError if i < 0 or i >= size
+    item = @first_item
+    i.times do
+      item = item.next_list_item
+    end
+    item
   end
 end
