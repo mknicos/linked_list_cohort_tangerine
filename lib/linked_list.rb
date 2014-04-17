@@ -152,7 +152,6 @@ class LinkedList
 
   def sort
     counter_index = 0
-    x =  self.sorted?
     until self.sorted?
       item1 = get_item(counter_index)
       item2 = get_item(counter_index + 1)
