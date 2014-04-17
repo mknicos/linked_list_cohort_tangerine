@@ -321,7 +321,6 @@ class LinkedListTest < MiniTest::Unit::TestCase
   end
 
   def test_45_sort_longer_list
-    #ll = LinkedList.new("foo", "bar", "apple")
     ll = LinkedList.new("bar", "adda", "grille", "abba", "foo")
     sortedll = ll.sort
     assert_equal( "| abba, adda, bar, foo, grille |", sortedll.to_s)

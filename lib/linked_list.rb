@@ -121,11 +121,11 @@ class LinkedList
     #until loops until end of list, because at the end the next item is nil
       until item.next_list_item == nil
         is_sorted = item <= item.next_list_item
+        item = item.next_list_item
+        index += 1
           if is_sorted == false
             return false
           end
-        item = item.next_list_item
-        index += 1
       end
     end
     return is_sorted
@@ -140,7 +140,7 @@ class LinkedList
     next_item = item1.next_list_item
 
     if index == 0
-      @first_item = item1.next_list_item
+      @first_item = next_item
       item1.next_list_item = item1.next_list_item.next_list_item
     else
       prev_item = get_item(index - 1)
@@ -153,12 +153,7 @@ class LinkedList
   def sort
     counter_index = 0
     x =  self.sorted?
-    puts
-    puts "THIS IS SOMETHING"
-    puts x
     until self.sorted?
-      puts ""
-      puts "NOT SORTED"
       item1 = get_item(counter_index)
       item2 = get_item(counter_index + 1)
       if item1 < item2
